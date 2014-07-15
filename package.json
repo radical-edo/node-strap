@@ -1,0 +1,32 @@
+{
+  "name": "mongoose-bootstrap",
+  "version": "0.1.0",
+  "description": "Traversing through 'models' directory to initialize models in one swift move.",
+  "main": "lib/mongoose-bootstrap.js",
+  "scripts": {
+    "test": "bin/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:radical-edo/mongoose-bootstrap.git"
+  },
+  "keywords": [
+    "mongoose",
+    "models",
+    "bootstrap",
+    "load"
+  ],
+  "author": {
+    "nickname": "radical-edo",
+    "email": "radical.3do@gmail.com",
+    "github": "https://github.com/radical-edo"
+  },
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/radical-edo/mongoose-bootstrap/issues"
+  },
+  "homepage": "https://github.com/radical-edo/mongoose-bootstrap",
+  "devDependencies": {
+    "mocha": "1.20.1"
+  }
+}
