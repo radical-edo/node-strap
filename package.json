@@ -1,18 +1,16 @@
 {
-  "name": "mongoose-bootstrap",
+  "name": "node-starp",
   "version": "0.1.0",
-  "description": "Traversing through 'models' directory to initialize models in one swift move.",
-  "main": "lib/mongoose-bootstrap.js",
+  "description": "Traversing through any directory to initialize/export in one swift move.",
+  "main": "lib/node-strap.js",
   "scripts": {
     "test": "bin/test"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:radical-edo/mongoose-bootstrap.git"
+    "url": "git@github.com:radical-edo/node-strap.git"
   },
   "keywords": [
-    "mongoose",
-    "models",
     "bootstrap",
     "load"
   ],
@@ -23,9 +21,9 @@
   },
   "license": "MIT License",
   "bugs": {
-    "url": "https://github.com/radical-edo/mongoose-bootstrap/issues"
+    "url": "https://github.com/radical-edo/node-strap/issues"
   },
-  "homepage": "https://github.com/radical-edo/mongoose-bootstrap",
+  "homepage": "https://github.com/radical-edo/node-strap",
   "devDependencies": {
     "mocha": "1.20.1"
   }

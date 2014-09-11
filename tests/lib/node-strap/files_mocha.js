@@ -1,4 +1,4 @@
-var models = require(__rootdir + '/lib/mongoose-bootstrap/models'),
+var models = require(__rootdir + '/lib/node-strap/files'),
     path = require('path')
 
 describe('models', function() {
