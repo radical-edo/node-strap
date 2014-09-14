@@ -1,5 +1,6 @@
 {
-  "name": "node-starp",
+  "private": false,
+  "name": "node-strap",
   "version": "0.1.0",
   "description": "Traversing through any directory to initialize/export in one swift move.",
   "main": "lib/node-strap.js",
