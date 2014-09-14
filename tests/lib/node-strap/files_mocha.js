@@ -3,9 +3,14 @@ var models = require(__rootdir + '/lib/node-strap/files'),
 
 describe('models', function() {
   before(function() {
-    models(__rootdir + '/tests/support/directory_tree')
+    models(__rootdir + '/tests/support/directory_tree', 'yay')
   })
   context('absolute path provided', function() {
+    context('invokes function', function() {
+      it('with args', function() {
+        assert.equal(bubu, 'yay')
+      })
+    })
     context('tree', function() {
       it('has root', function() {
         assert.equal(root, 'root')
