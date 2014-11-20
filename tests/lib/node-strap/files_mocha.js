@@ -10,6 +10,9 @@ describe('models', function() {
       it('with args', function() {
         assert.equal(bubu, 'yay')
       })
+      it('goes deeper', function() {
+        assert.equal(ubub, 'yay')
+      })
     })
     context('tree', function() {
       it('has root', function() {
