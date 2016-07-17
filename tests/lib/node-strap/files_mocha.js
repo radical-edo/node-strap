@@ -1,5 +1,5 @@
-var models = require(__rootdir + '/lib/node-strap/files'),
-    path = require('path')
+var models = require(__rootdir + '/lib/node-strap/files');
+var path = require('path');
 
 describe('models', function() {
   before(function() {
@@ -24,7 +24,7 @@ describe('models', function() {
     })
     context('tree', function() {
       it('has root', function() {
-        assert.equal(root, 'root')
+        assert.equal(treeRoot, 'root')
       })
       it('has no polypore', function() {
         assert.equal(typeof polypore, 'undefined')

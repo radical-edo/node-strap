@@ -1,1 +1,1 @@
-global.root = 'root'
+global.treeRoot = 'root'
