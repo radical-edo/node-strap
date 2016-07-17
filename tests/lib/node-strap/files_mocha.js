@@ -6,6 +6,14 @@ describe('models', function() {
     models(__rootdir + '/tests/support/directory_tree', 'yay')
   })
   context('absolute path provided', function() {
+    context('hidden directory in the path', function () {
+      it('should not raise an error', function () {
+        assert.doesNotThrow(function () {
+          models(__rootdir + '/tests/support/directory_tree', 'yay');
+        }, Error);
+      });
+    });
+
     context('invokes function', function() {
       it('with args', function() {
         assert.equal(bubu, 'yay')
