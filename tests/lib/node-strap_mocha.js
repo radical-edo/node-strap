@@ -1,3 +1,4 @@
+'use strict';
 var bootstarap = require(__rootdir, '/lib/node-strap')
 
 describe('strap', function() {

@@ -1,3 +1,4 @@
+'use strict';
 var models = require(__rootdir + '/lib/node-strap/files');
 var path = require('path');
 
