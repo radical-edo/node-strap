@@ -8,6 +8,7 @@ var crawl = function crawl(filePath, options) {
   var argsToApply = options.applyArgs || [];
   var path = nodePath.resolve(rootDir, filePath);
   var callOrder = options.callOrder || [];
+  var strapDirectories = options.strapDirectories || false;
   fs.readdirSync(path).sort(inSuppliedOrder(callOrder)).forEach(function (file) {
     var closedUpPath = closeUp(path);
     // has to be a full path to file
@@ -22,7 +23,7 @@ var crawl = function crawl(filePath, options) {
           required.apply(null, argsToApply);
         }
       }
-    } else if (stat.isDirectory()) {
+    } else if (strapDirectories && stat.isDirectory()) {
       crawl.call(null, newPath, options);
     }
   });

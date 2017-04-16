@@ -6,6 +6,7 @@ var models = require('../node-strap');
 describe('models', function () {
   before(function () {
     models('./support/directory_tree', {
+      strapDirectories: true,
       rootDir: __dirname,
       applyArgs: ['yay']
     });
@@ -34,6 +35,7 @@ describe('models', function () {
       it('should not raise an error', function () {
         assert.doesNotThrow(function () {
           models('./support/directory_tree', {
+            strapDirectories: true,
             rootDir: __dirname,
             applyArgs: ['yay']
           });
