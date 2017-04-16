@@ -4,7 +4,8 @@ var path = require('path');
 
 describe('models', function () {
   before(function () {
-    models(__rootdir + '/tests/support/directory_tree', {
+    models('../../support/directory_tree', {
+      rootDir: __dirname,
       applyArgs: ['yay']
     });
   });
@@ -13,7 +14,8 @@ describe('models', function () {
     context('hidden directory in the path', function () {
       it('should not raise an error', function () {
         assert.doesNotThrow(function () {
-          models(__rootdir + '/tests/support/directory_tree', {
+          models('../../support/directory_tree', {
+            rootDir: __dirname,
             applyArgs: ['yay']
           });
         }, Error);
@@ -57,10 +59,10 @@ describe('models', function () {
     });
   });
 
-  context('relative path provided', function () {
-    it('rasies unsupported option error', function () {
+  context('no "rootDir" provided, therfore "process.cwd()" is used', function () {
+    it('raises error because it navigates out of the project', function () {
       assert.throws(function () {
-        models('/../../support/directory_tree');
+        models('../../support/directory_tree');
       }, Error);
     });
   });
