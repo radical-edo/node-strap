@@ -10,6 +10,24 @@ describe('models', function () {
     });
   });
 
+
+  context('starp files in specified order', function () {
+    beforeEach(function () {
+      models('../../support/connected_dependencies', {
+        rootDir: __dirname,
+        callOrder: ['init_leave.js', 'override_leaves.js', 'add_one_leaf']
+      });
+    });
+
+    it('"secretLeaves" should be an Array', function () {
+      assert.equal(secretLeaves instanceof Array, true)
+    });
+
+    it('"secretLeaves" should have 3 leaves', function () {
+      assert.equal(secretLeaves.length, 3);
+    });
+  });
+
   context('absolute path provided', function () {
     context('hidden directory in the path', function () {
       it('should not raise an error', function () {
