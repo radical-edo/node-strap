@@ -4,6 +4,9 @@
   "version": "0.2.2",
   "description": "Traversing through any directory to initialize/export in one swift move.",
   "main": "node-strap.js",
+  "engines": {
+    "node": ">=0.10"
+  },
   "scripts": {
     "test": "NODE_ENV=test mocha tests/_mocha_helper.js --reporter spec --ui bdd $(find tests -name *_mocha.js)"
   },
