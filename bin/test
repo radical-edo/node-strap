@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-NODE_ENV=test ./node_modules/mocha/bin/mocha tests/_mocha_helper.js --reporter spec --ui bdd "tests/**/*_mocha.js"

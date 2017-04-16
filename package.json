@@ -5,7 +5,7 @@
   "description": "Traversing through any directory to initialize/export in one swift move.",
   "main": "lib/node-strap.js",
   "scripts": {
-    "test": "bin/test"
+    "test": "NODE_ENV=test mocha tests/_mocha_helper.js --reporter spec --ui bdd tests/**/*_mocha.js"
   },
   "repository": {
     "type": "git",
