@@ -1,10 +1,11 @@
 'use strict';
-var models = require(__rootdir + '/lib/node-strap/files');
 var path = require('path');
+
+var models = require('../node-strap');
 
 describe('models', function () {
   before(function () {
-    models('../../support/directory_tree', {
+    models('./support/directory_tree', {
       rootDir: __dirname,
       applyArgs: ['yay']
     });
@@ -13,7 +14,7 @@ describe('models', function () {
 
   context('starp files in specified order', function () {
     beforeEach(function () {
-      models('../../support/connected_dependencies', {
+      models('./support/connected_dependencies', {
         rootDir: __dirname,
         callOrder: ['init_leave.js', 'override_leaves.js', 'add_one_leaf']
       });
@@ -32,7 +33,7 @@ describe('models', function () {
     context('hidden directory in the path', function () {
       it('should not raise an error', function () {
         assert.doesNotThrow(function () {
-          models('../../support/directory_tree', {
+          models('./support/directory_tree', {
             rootDir: __dirname,
             applyArgs: ['yay']
           });
