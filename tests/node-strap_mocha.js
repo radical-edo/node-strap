@@ -4,11 +4,24 @@ var path = require('path');
 var models = require('../node-strap');
 
 describe('models', function () {
-  before(function () {
-    models('./support/directory_tree', {
-      strapDirectories: true,
-      rootDir: __dirname,
-      applyArgs: ['yay']
+  context('strap some files in order', function () {
+    beforeEach(function () {
+      models('./support/pre_require', {
+        rootDir: __dirname,
+        strapFirst: ['first_in_order.js', 'second_in_order']
+      });
+    });
+
+    it('"preRequire" should be an Array', function () {
+      assert.equal(preRequire instanceof Array, true)
+    });
+
+    it('"preRequire" should have 2 items', function () {
+      assert.equal(preRequire.length, 3);
+    });
+
+    it('"preRequire" should have items in array in specific order', function () {
+      assert.equal(preRequire.toString(), '#2,#last,#nextToLast');
     });
   });
 
@@ -31,6 +44,14 @@ describe('models', function () {
   });
 
   context('absolute path provided', function () {
+    before(function () {
+      models('./support/directory_tree', {
+        strapDirectories: true,
+        rootDir: __dirname,
+        applyArgs: ['yay']
+      });
+    });
+
     context('hidden directory in the path', function () {
       it('should not raise an error', function () {
         assert.doesNotThrow(function () {
@@ -81,6 +102,14 @@ describe('models', function () {
   });
 
   context('no "rootDir" provided, therfore "process.cwd()" is used', function () {
+    before(function () {
+      models('./support/directory_tree', {
+        strapDirectories: true,
+        rootDir: __dirname,
+        applyArgs: ['yay']
+      });
+    });
+
     it('raises error because it navigates out of the project', function () {
       assert.throws(function () {
         models('../../support/directory_tree');

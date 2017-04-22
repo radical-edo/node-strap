@@ -9,7 +9,11 @@ var crawl = function crawl(filePath, options) {
   var path = nodePath.resolve(rootDir, filePath);
   var callOrder = options.callOrder || [];
   var strapDirectories = options.strapDirectories || false;
-  fs.readdirSync(path).sort(inSuppliedOrder(callOrder)).forEach(function (file) {
+  var strapFirst = options.strapFirst || [];
+  getListOfFiles(path, {
+    callOrder: callOrder,
+    strapFirst: strapFirst
+  }).forEach(function (file) {
     var closedUpPath = closeUp(path);
     // has to be a full path to file
     // otherwise node assumes it's a module
@@ -29,10 +33,44 @@ var crawl = function crawl(filePath, options) {
   });
 };
 
-var inSuppliedOrder = function inSuppliedOrder(callOrder) {
-  callOrder = callOrder.map(function (name) {
-    return nodePath.extname(name) === '' ? name + '.js' : name;
+var getListOfFiles = function getListOfFiles(path, options) {
+  var filesList = fs.readdirSync(path);
+  if (options.callOrder.length) {
+    return filesList.sort(inSuppliedOrder(options.callOrder));
+  } else if (options.strapFirst.length) {
+    var filesToStrapAfter = [];
+    var strapListWithExtension = appendExtension(options.strapFirst);
+    return filesList.filter(function (fileName) {
+      var fileInStrapList = -1 !== strapListWithExtension.indexOf(fileName);
+      if (false === fileInStrapList) {
+        filesToStrapAfter.push(fileName);
+      }
+      return fileInStrapList;
+    }).sort(inSuppliedOrder(options.strapFirst)).concat(filesToStrapAfter);
+  } else {
+    return filesList;
+  }
+};
+
+var inPartialOrder = function inPartialOrder(strapFirst) {
+  strapFirst = appendExtension(strapFirst);
+  return function strapFirstSortFunc(a, b) {
+    if (-1 === strapFirst.indexOf(a) || -1 === strapFirst.indexOf(b)) {
+      return -1;
+    } else {
+      return strapFirst.indexOf(a) - strapFirst.indexOf(b);
+    }
+  };
+};
+
+var appendExtension = function appendExtension(files) {
+  return files.map(function (fileName) {
+    return nodePath.extname(fileName) === '' ? fileName + '.js' : fileName;
   });
+};
+
+var inSuppliedOrder = function inSuppliedOrder(callOrder) {
+  callOrder = appendExtension(callOrder);
   return function sortingFunc(a, b) {
     return callOrder.indexOf(a) - callOrder.indexOf(b);
   };
