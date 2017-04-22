@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "node-strap",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Traversing through any directory to initialize/export in one swift move.",
   "main": "node-strap.js",
   "engines": {

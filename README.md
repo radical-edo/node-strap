@@ -1,3 +1,4 @@
+
 # Node-Strap
 A simple utility function to help bootstrap Node.js projects.
 
@@ -26,6 +27,7 @@ const callOrder = ['first_file.js', 'second_file.js'];
 const callOrder = ['first_file', 'second_file'];
 ```
 Either way is fine. And yes, I'm aware that I've redfined a `const` value, it's just to show that you should pick one :smirk:
+* `strapFirst` - this one is a bit tricky, but in short, you can specify only few list of files that will be "bootstrapped" first, and the rest will be required as read in directory (most likley aplhabetically, but that's not guaranteed). **Important** is that, `options.callOrder` takes precedense, if it is specified, this option will be **ignored**.
 
 ### Caveat
 The exported function is **synchronous**. Please keep that in mind. The use case for this was to initiate a project, so you wouldn't have to write all those `require` by hand. Just keep them in one place. And `require` is **synchronous** therefore I've seen no reason to make it **asynchronous** :sunglasses:
